@@ -1,0 +1,6 @@
+[user]
+	email = bjm.henry@gmail.com
+	name = Basile Henry
+	signingkey = 32FE8303BEEAEC0B
+[core]
+	excludesfile = ~/.gitignore
