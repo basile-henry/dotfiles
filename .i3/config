@@ -129,17 +129,6 @@ bindsym $mod+Shift+9 move container to workspace 9
 bindsym $mod+Shift+0 move container to workspace 10
 
 # move workspace to other monitor
-mode "monitor" {
-    bindsym $mod+Down  move workspace to output down , mode "default"
-    bindsym $mod+Up    move workspace to output up   , mode "default"
-    bindsym $mod+Left  move workspace to output left , mode "default"
-    bindsym $mod+Right move workspace to output right, mode "default"
-    
-    bindsym Return mode "default"
-    bindsym Escape mode "default"
-}
-
-# bindsym $mod+m mode "monitor"
 bindsym $mod+m move workspace to output down, move workspace to output left
 
 # reload the configuration file
