@@ -29,6 +29,9 @@ Plugin 'nbouscal/vim-stylish-haskell'
 " Elm
 Plugin 'elmcast/elm-vim'
 
+" Colour scheme
+Plugin 'w0ng/vim-hybrid'
+  
 call vundle#end()            " required
 filetype plugin indent on    " required
 
@@ -60,15 +63,18 @@ set expandtab
 set incsearch
 set clipboard=unnamedplus,autoselect
 set hlsearch
+set incsearch
 " set term=screen-256color
 " set termguicolors
 set completeopt=menuone,menu,longest
+set noshowmode
 
 " Always show statusline
 set laststatus=2
 
 let g:airline_powerline_fonts = 1
-let g:airline_theme='base16_ashes'
+" let g:airline_theme='base16_ashes'
+let g:airline_theme='hybrid'
 let g:move_key_modifier='C'
 
 map <Leader>n :NERDTreeToggle<CR>
@@ -113,3 +119,8 @@ autocmd FileType haskell setlocal omnifunc=necoghc#omnifunc
 
 " Elm
 let g:elm_format_autosave = 1
+
+" Colour scheme
+set background=dark
+let g:hybrid_custom_term_colors = 1
+colorscheme hybrid
