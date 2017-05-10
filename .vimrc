@@ -31,7 +31,10 @@ Plugin 'elmcast/elm-vim'
 
 " Colour scheme
 Plugin 'w0ng/vim-hybrid'
-  
+
+" Python
+Plugin 'davidhalter/jedi-vim'
+
 call vundle#end()            " required
 filetype plugin indent on    " required
 

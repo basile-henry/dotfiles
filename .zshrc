@@ -84,4 +84,6 @@ export GPGKEY=32FE8303BEEAEC0B
 export PASSWORD_STORE_CHARACTER_SET="1-9A-HJ-NP-Za-km-z_+;:.,!?"
 
 # todo.txt
-alias td=/usr/bin/todo.sh/
+alias td=/usr/bin/todo.sh
+
+alias sl=ls
