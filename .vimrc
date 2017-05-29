@@ -20,7 +20,8 @@ Plugin 'scrooloose/nerdcommenter'
 " Haskell as describe http://www.stephendiehl.com/posts/vim_2016.html
 Plugin 'eagletmt/ghcmod-vim'
 Plugin 'eagletmt/neco-ghc'
-Plugin 'scrooloose/syntastic'
+Plugin 'vim-syntastic/syntastic'
+" Plugin 'scrooloose/syntastic'
 Plugin 'ervandew/supertab'
 Plugin 'Shougo/neocomplete.vim'
 Plugin 'Shougo/vimproc.vim'
@@ -34,6 +35,9 @@ Plugin 'w0ng/vim-hybrid'
 
 " Python
 Plugin 'davidhalter/jedi-vim'
+
+" Rust
+Plugin 'rust-lang/rust.vim'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -71,6 +75,8 @@ set incsearch
 " set termguicolors
 set completeopt=menuone,menu,longest
 set noshowmode
+set dict+=/usr/share/dict/words
+set thesaurus+=/usr/share/dict/thesaurus
 
 " Always show statusline
 set laststatus=2
@@ -99,6 +105,7 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 0
 let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 0
+let g:syntactic_rust_checkers = ['rustc']
 
 " ghc-mod
 map <silent> tw :GhcModTypeInsert<CR>
@@ -122,6 +129,9 @@ autocmd FileType haskell setlocal omnifunc=necoghc#omnifunc
 
 " Elm
 let g:elm_format_autosave = 1
+
+" Rust
+let g:rustfmt_autosave = 1
 
 " Colour scheme
 set background=dark

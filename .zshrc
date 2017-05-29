@@ -78,15 +78,20 @@ export EDITOR='vim'
 #
 # Example aliases
 alias zshconfig="$EDITOR ~/.zshrc"
-
 export PATH=$HOME/.local/bin:$PATH
 export GPGKEY=32FE8303BEEAEC0B
 export PASSWORD_STORE_CHARACTER_SET="1-9A-HJ-NP-Za-km-z_+;:.,!?"
 
+# Fix termite opening new tab
+source /etc/profile.d/vte.sh
+
 # todo.txt
 alias td=/usr/bin/todo.sh
-
 alias sl=ls
+
+###############################
+# Fix binding issues in vi-mode
+###############################
 
 # start typing + [Up-Arrow] - fuzzy find history forward
 if [[ "${terminfo[kcuu1]}" != "" ]]; then
@@ -100,3 +105,16 @@ if [[ "${terminfo[kcud1]}" != "" ]]; then
   zle -N down-line-or-beginning-search
   bindkey "${terminfo[kcud1]}" down-line-or-beginning-search
 fi
+
+bindkey "${terminfo[khome]}" beginning-of-line
+bindkey "${terminfo[kend]}" end-of-line
+bindkey '^[[3~' delete-char
+
+# if [[ "${terminfo[kcul1]}" != "" ]]; then
+#   zle -N backward-word 
+#   bindkey "^${terminfo[kcul1]}" backward-word
+# fi
+# if [[ "${terminfo[kcur1]}" != "" ]]; then
+#   zle -N foreward-word 
+#   bindkey "^${terminfo[kcur1]}" foreward-word
+# fi
