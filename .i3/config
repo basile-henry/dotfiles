@@ -12,8 +12,9 @@
 
 set $mod Mod4
 
-exec --no-startup-id "sh -c 'sleep 1; exec feh --bg-fill /home/basile/Pictures/background.png'"
-exec --no-startup-id "sh -c 'sleep 2; exec dropbox'"
+# exec --no-startup-id "sh -c 'sleep 1; exec feh --bg-fill /home/basile/Pictures/background.png'"
+# exec --no-startup-id "sh -c 'sleep 2; exec dropbox'"
+exec --no-startup-id "sh -c 'sleep 1; exec gnome-settings-daemon'"
 
 # exec --no-startup-id xrandr --output LVDS-1-0 --off --output HDMI-0 --auto --primary
 # exec --no-startup-id xrandr --output LVDS-1 --off --output VGA-1 --auto --primary
@@ -62,7 +63,8 @@ bar {
 }
 
 # start a terminal
-bindsym $mod+Return exec termite # i3-sensible-terminal
+# bindsym $mod+Return exec termite # i3-sensible-terminal
+bindsym $mod+Return exec termite -e /bin/zsh
 
 # kill focused window
 bindsym $mod+Shift+q kill

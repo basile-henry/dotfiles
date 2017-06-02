@@ -7,7 +7,7 @@ export ZSH=/home/basile/.oh-my-zsh
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-ZSH_THEME="robbyrussell"
+ZSH_THEME="basile"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -51,7 +51,7 @@ COMPLETION_WAITING_DOTS="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git cabal stack battery z vi-mode)
+plugins=(git cabal stack battery z vi-mode nix)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -85,8 +85,18 @@ export PASSWORD_STORE_CHARACTER_SET="1-9A-HJ-NP-Za-km-z_+;:.,!?"
 # Fix termite opening new tab
 source /etc/profile.d/vte.sh
 
+export NIX_PATH=myrtle=/home/basile/myrtlepkgs:$NIX_PATH
+
+ns(){
+  nix-shell --command "IN_NIX_SHELL=1 exec zsh; return" "$@"
+}
+
+# Remove the completion for ns, we use that name as a function
+compdef -d ns
+
 # todo.txt
-alias td=/usr/bin/todo.sh
+# alias td=/usr/bin/todo.sh
+
 alias sl=ls
 
 ###############################
