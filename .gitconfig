@@ -4,3 +4,5 @@
 	signingkey = 32FE8303BEEAEC0B
 [core]
 	excludesfile = ~/.gitignore
+[gpg]
+	program = gpg2

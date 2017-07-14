@@ -1,5 +1,6 @@
 [options]
 font = Hermit 11
+scrollback_lines = 50000
 
 [colors]
 

@@ -53,13 +53,15 @@ filetype plugin indent on    " required
 
 syntax on
 
+set mouse=a
+set timeoutlen=1000 ttimeoutlen=0
 set encoding=utf-8
 set cmdheight=1
 set showcmd
 set number
 set nocompatible
 " set nowrap
-" set tw=80
+set tw=80
 set smartcase
 set smarttab
 set smartindent
@@ -87,12 +89,12 @@ let g:airline_theme='hybrid'
 let g:move_key_modifier='C'
 
 map <Leader>n :NERDTreeToggle<CR>
+let NERDTreeIgnore = ['\.o$', '\.hi$', '\.dyn.*$']
 
 " NERDCommenter
 let g:NERDSpaceDelims = 1
 let g:NERDDefaultAlign = 'left'
 let g:NERDAltDelims_haskell = 1
-" imap <c-/> <Leader>cc
 
 " syntastic
 map <Leader>s :SyntasticToggleMode<CR>
@@ -137,3 +139,10 @@ let g:rustfmt_autosave = 1
 set background=dark
 let g:hybrid_custom_term_colors = 1
 colorscheme hybrid
+
+hi MatchParen cterm=bold ctermbg=none ctermfg=none gui=bold guibg=none guifg=none
+
+augroup vimrc_autocmds
+  autocmd BufEnter * highlight OverLength ctermbg=darkgrey guibg=#592929
+  autocmd BufEnter * match OverLength /\%81v.*/
+augroup END

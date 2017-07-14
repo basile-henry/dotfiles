@@ -64,6 +64,7 @@ source $ZSH/oh-my-zsh.sh
 
 # Preferred editor for local and remote sessions
 export EDITOR='vim'
+KEYTIMEOUT=1
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
@@ -86,6 +87,8 @@ export PASSWORD_STORE_CHARACTER_SET="1-9A-HJ-NP-Za-km-z_+;:.,!?"
 source /etc/profile.d/vte.sh
 
 export NIX_PATH=myrtle=/home/basile/myrtlepkgs:$NIX_PATH
+
+source /etc/nix/nix-profile.sh
 
 ns(){
   nix-shell --command "IN_NIX_SHELL=1 exec zsh; return" "$@"
@@ -119,6 +122,15 @@ fi
 bindkey "${terminfo[khome]}" beginning-of-line
 bindkey "${terminfo[kend]}" end-of-line
 bindkey '^[[3~' delete-char
+
+# Change audio sink bindings in i3/config
+chsink() {
+  sed -i.bak 's/\(pactl.* \)[0-9]\+/\1'$1'/' ~/.i3/config;
+  i3-msg reload;
+  i3-msg restart;
+}
+
+rg2vim() { vim -c "$(rg -n $1 | peco --select-1 | awk -F\: 'BEGIN {ORS="|"}; {print (NR==1 ? "e " : "tabe ") $1"|:"$2}')" }
 
 # if [[ "${terminfo[kcul1]}" != "" ]]; then
 #   zle -N backward-word 
