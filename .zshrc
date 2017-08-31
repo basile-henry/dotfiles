@@ -51,7 +51,7 @@ COMPLETION_WAITING_DOTS="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git cabal stack battery z vi-mode nix)
+plugins=(git cabal stack battery z vi-mode)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -85,14 +85,6 @@ export PASSWORD_STORE_CHARACTER_SET="1-9A-HJ-NP-Za-km-z_+;:.,!?"
 
 # Fix termite opening new tab
 source /etc/profile.d/vte.sh
-
-export NIX_PATH=myrtle=/home/basile/myrtlepkgs:$NIX_PATH
-
-source /etc/nix/nix-profile.sh
-
-ns(){
-  nix-shell --command "IN_NIX_SHELL=1 exec zsh; return" "$@"
-}
 
 # Remove the completion for ns, we use that name as a function
 compdef -d ns

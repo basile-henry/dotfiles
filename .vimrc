@@ -131,6 +131,7 @@ autocmd FileType haskell setlocal omnifunc=necoghc#omnifunc
 
 " Elm
 let g:elm_format_autosave = 1
+autocmd FileType elm setlocal shiftwidth=4 softtabstop=4
 
 " Rust
 let g:rustfmt_autosave = 1
@@ -140,7 +141,7 @@ set background=dark
 let g:hybrid_custom_term_colors = 1
 colorscheme hybrid
 
-hi MatchParen cterm=bold ctermbg=none ctermfg=none gui=bold guibg=none guifg=none
+hi MatchParen cterm=bold ctermbg=none ctermfg=none gui=bold
 
 augroup vimrc_autocmds
   autocmd BufEnter * highlight OverLength ctermbg=darkgrey guibg=#592929
