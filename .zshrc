@@ -86,8 +86,18 @@ export PASSWORD_STORE_CHARACTER_SET="1-9A-HJ-NP-Za-km-z_+;:.,!?"
 # Fix termite opening new tab
 source /etc/profile.d/vte.sh
 
+###############################
+# Nix
+###############################
+
 # Remove the completion for ns, we use that name as a function
 compdef -d ns
+
+source $HOME/.nix-profile/etc/profile.d/nix.sh
+
+ns(){
+  nix-shell --command "IN_NIX_SHELL=1 exec zsh; return" "$@"
+}
 
 # todo.txt
 # alias td=/usr/bin/todo.sh
