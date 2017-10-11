@@ -31,13 +31,16 @@ Plugin 'nbouscal/vim-stylish-haskell'
 Plugin 'elmcast/elm-vim'
 
 " Colour scheme
-Plugin 'w0ng/vim-hybrid'
+Plugin 'arcticicestudio/nord-vim'
 
 " Python
 Plugin 'davidhalter/jedi-vim'
 
 " Rust
 Plugin 'rust-lang/rust.vim'
+
+" Nix
+Plugin 'LnL7/vim-nix'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -73,7 +76,8 @@ set incsearch
 set clipboard=unnamedplus,autoselect
 set hlsearch
 set incsearch
-" set term=screen-256color
+set term=screen-256color
+" set t_Co=256
 " set termguicolors
 set completeopt=menuone,menu,longest
 set noshowmode
@@ -83,10 +87,9 @@ set thesaurus+=/usr/share/dict/thesaurus
 " Always show statusline
 set laststatus=2
 
+" Theme
 let g:airline_powerline_fonts = 1
-" let g:airline_theme='base16_ashes'
-let g:airline_theme='hybrid'
-let g:move_key_modifier='C'
+colorscheme nord
 
 map <Leader>n :NERDTreeToggle<CR>
 let NERDTreeIgnore = ['\.o$', '\.hi$', '\.dyn.*$']
@@ -135,11 +138,6 @@ autocmd FileType elm setlocal shiftwidth=4 softtabstop=4
 
 " Rust
 let g:rustfmt_autosave = 1
-
-" Colour scheme
-set background=dark
-let g:hybrid_custom_term_colors = 1
-colorscheme hybrid
 
 hi MatchParen cterm=bold ctermbg=none ctermfg=none gui=bold
 

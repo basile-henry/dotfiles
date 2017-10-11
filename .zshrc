@@ -142,3 +142,10 @@ rg2vim() { vim -c "$(rg -n $1 | peco --select-1 | awk -F\: 'BEGIN {ORS="|"}; {pr
 #   zle -N foreward-word 
 #   bindkey "^${terminfo[kcur1]}" foreward-word
 # fi
+
+if [ ! -S ~/.ssh/ssh_auth_sock ]; then
+  eval `ssh-agent`
+  ln -sf "$SSH_AUTH_SOCK" ~/.ssh/ssh_auth_sock
+fi
+export SSH_AUTH_SOCK=~/.ssh/ssh_auth_sock
+ssh-add -l > /dev/null || ssh-add

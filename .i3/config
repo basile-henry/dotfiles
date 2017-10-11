@@ -49,7 +49,7 @@ client.urgent           #da4939 #da4939 #ffffff #900000
 bar {
     position top
     status_command i3status
-    font pango:Hermite 8
+    font pango:FiraCode 10
     colors{
       background #2b2b2b
       statusline #e6e1dc
@@ -62,8 +62,7 @@ bar {
 }
 
 # start a terminal
-# bindsym $mod+Return exec termite # i3-sensible-terminal
-bindsym $mod+Return exec termite -e zsh
+bindsym $mod+Return exec konsole
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -74,7 +73,7 @@ bindsym $mod+Shift+q kill
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
 # bindsym $mod+d exec --no-startup-id i3-dmenu-desktop --dmenu "dmenu -fn 'DejaVu Sans Mono 11'"
-bindsym $mod+d exec --no-startup-id dmenu_run -fn 'Hermite 10'
+bindsym $mod+d exec --no-startup-id dmenu_run -fn 'FiraCode 10'
 
 # change focus
 bindsym $mod+h focus left
