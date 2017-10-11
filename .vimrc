@@ -42,6 +42,9 @@ Plugin 'rust-lang/rust.vim'
 " Nix
 Plugin 'LnL7/vim-nix'
 
+" CtrlP
+Plugin 'ctrlpvim/ctrlp.vim'
+
 call vundle#end()            " required
 filetype plugin indent on    " required
 
