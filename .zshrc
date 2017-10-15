@@ -135,11 +135,11 @@ chsink() {
 rg2vim() { vim -c "$(rg -n $1 | peco --select-1 | awk -F\: 'BEGIN {ORS="|"}; {print (NR==1 ? "e " : "tabe ") $1"|:"$2}')" }
 
 # if [[ "${terminfo[kcul1]}" != "" ]]; then
-#   zle -N backward-word 
+#   zle -N backward-word
 #   bindkey "^${terminfo[kcul1]}" backward-word
 # fi
 # if [[ "${terminfo[kcur1]}" != "" ]]; then
-#   zle -N foreward-word 
+#   zle -N foreward-word
 #   bindkey "^${terminfo[kcur1]}" foreward-word
 # fi
 
