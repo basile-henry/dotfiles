@@ -91,6 +91,7 @@ set thesaurus+=/usr/share/dict/thesaurus
 set laststatus=2
 
 " Theme
+let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
 colorscheme nord
 
