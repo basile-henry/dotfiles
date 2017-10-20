@@ -8,7 +8,10 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
 
+" Git
 Plugin 'tpope/vim-fugitive'
+Plugin 'airblade/vim-gitgutter'
+
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'vim-airline/vim-airline'
 Plugin 'matze/vim-move'
@@ -102,6 +105,15 @@ let NERDTreeIgnore = ['\.o$', '\.hi$', '\.dyn.*$']
 let g:NERDSpaceDelims = 1
 let g:NERDDefaultAlign = 'left'
 let g:NERDAltDelims_haskell = 1
+
+" Vim move
+let g:move_key_modifier = 'C'
+
+" GitGutter styling to use · instead of +/-
+let g:gitgutter_sign_added = '∙'
+let g:gitgutter_sign_modified = '∙'
+let g:gitgutter_sign_removed = '∙'
+let g:gitgutter_sign_modified_removed = '∙'
 
 " syntastic
 map <Leader>s :SyntasticToggleMode<CR>
