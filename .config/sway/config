@@ -16,7 +16,7 @@ set $right l
 # Your preferred terminal emulator
 set $term konsole
 # Your preferred application launcher
-set $menu dmenu_run -fn "FiraCode 14"
+set $menu dmenu_run -l 10 -i -nb "#2E3440" -nf "#ECEFF4" -sb "#8FBCBB" -sf "#2E3440" -f -fn "Droid Sans 12"
 
 ### Output configuration
 #
@@ -205,9 +205,9 @@ bar {
 
       # colors:          border  backgr. text
       focused_workspace  #ECEFF4 #D8DEE9 #4C566A
-      active_workspace   #424242 #424242 #f9f7f3
-      inactive_workspace #424242 #2b2b2b #f9f7f3
-      urgent_workspace   #da4939 #da4939 #f9f7f3
+      active_workspace   #3B4252 #434c5E #ECEFF4
+      inactive_workspace #3B4252 #434c5E #ECEFF4
+      urgent_workspace   #BF616A #BF616A #ECEFF4
     }
 }
 
