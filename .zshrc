@@ -84,7 +84,7 @@ export GPGKEY=32FE8303BEEAEC0B
 export PASSWORD_STORE_CHARACTER_SET="1-9A-HJ-NP-Za-km-z_+;:.,!?"
 
 # Fix termite opening new tab
-source /etc/profile.d/vte.sh
+# source /etc/profile.d/vte.sh
 
 ###############################
 # Nix
@@ -94,6 +94,11 @@ source /etc/profile.d/vte.sh
 compdef -d ns
 
 source $HOME/.nix-profile/etc/profile.d/nix.sh
+# if [[ "$IN_NIX_SHELL" == "" ]]; then
+#   if [ -e "/etc/nix/nix-profile.sh" ]; then
+#     source /etc/nix/nix-profile.sh
+#   fi
+# fi
 
 ns(){
   nix-shell --command "IN_NIX_SHELL=1 exec zsh; return" "$@"
