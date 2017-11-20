@@ -48,6 +48,9 @@ Plugin 'LnL7/vim-nix'
 " CtrlP
 Plugin 'ctrlpvim/ctrlp.vim'
 
+" Ack/Ag
+Plugin 'mileszs/ack.vim'
+
 call vundle#end()            " required
 filetype plugin indent on    " required
 
@@ -101,6 +104,14 @@ colorscheme nord
 map <Leader>n :NERDTreeToggle<CR>
 let NERDTreeIgnore = ['\.o$', '\.hi$', '\.dyn.*$']
 
+" CtrlP
+let g:ctrlp_user_command = 'ag -l --nocolor -g "" %s'
+
+" Ag
+if executable('ag')
+  let g:ackprg = 'ag --vimgrep'
+endif
+
 " NERDCommenter
 let g:NERDSpaceDelims = 1
 let g:NERDDefaultAlign = 'left'
@@ -110,10 +121,10 @@ let g:NERDAltDelims_haskell = 1
 let g:move_key_modifier = 'C'
 
 " GitGutter styling to use · instead of +/-
-let g:gitgutter_sign_added = '∙'
-let g:gitgutter_sign_modified = '∙'
-let g:gitgutter_sign_removed = '∙'
-let g:gitgutter_sign_modified_removed = '∙'
+" let g:gitgutter_sign_added = '∙'
+" let g:gitgutter_sign_modified = '∙'
+" let g:gitgutter_sign_removed = '∙'
+" let g:gitgutter_sign_modified_removed = '∙'
 
 " syntastic
 map <Leader>s :SyntasticToggleMode<CR>
