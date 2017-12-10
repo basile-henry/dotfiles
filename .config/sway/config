@@ -21,7 +21,8 @@ set $menu dmenu_run -l 10 -i -nb "#2E3440" -nf "#ECEFF4" -sb "#8FBCBB" -sf "#2E3
 ### Output configuration
 #
 # Default wallpaper (more resolutions are available in /usr/share/sway/)
-output eDP-1 resolution 2560x1440 position 0,0 background ~/pictures/wallpaper.png fill
+output eDP-1 resolution 2560x1440 position 500,1080 background ~/pictures/wallpaper.png fill
+output HDMI-A-1 resolution 1920x1080 position 0,0 background ~/pictures/wallpaper.png fill
 
 # Example configuration:
 #
@@ -34,17 +35,22 @@ input "2:7:SynPS/2_Synaptics_TouchPad" {
     dwt enabled
     tap enabled
     middle_emulation enabled
+    accel_profile adaptive
 }
 
 hide_edge_borders both
 
 # Remove window titles
 font pango:Hermit 0
-gaps inner 6
+# gaps edge_gaps off
+# gaps inner 5
 
 # Colours
-client.focused   #D8DEE9 #D8DEE9 #D8DEE9 #D8DEE9 #D8DEE9
-client.unfocused #2E3440 #2E3440 #2E3440 #2E3440 #2E3440
+client.focused          #D8DEE9 #D8DEE9 #D8DEE9 #D8DEE9 #D8DEE9
+client.background       #4C566A #4C566A #4C566A #4C566A #4C566A
+client.placeholder      #4C566A #4C566A #4C566A #4C566A #4C566A
+client.unfocused        #4C566A #4C566A #4C566A #4C566A #4C566A
+client.focused_inactive #4C566A #4C566A #4C566A #4C566A #4C566A
 
 ### Lock screen
 
@@ -57,6 +63,10 @@ bindsym $mod+p exec swaylock -i ~/pictures/wallpaper.png
 #
 # Basics:
 #
+
+    # Screenshots
+    bindsym $mod+o exec swaygrab ~/screenshot.png
+
     # start a terminal
     bindsym $mod+Return exec $term
 
@@ -166,6 +176,9 @@ bindsym $mod+p exec swaylock -i ~/pictures/wallpaper.png
     # Show the next scratchpad window or hide the focused scratchpad window.
     # If there are multiple scratchpad windows, this command cycles through them.
     bindsym $mod+minus scratchpad show
+
+    # move workspace to other monitor
+    bindsym $mod+m move workspace to output down, move workspace to output left
 #
 # Resizing containers:
 #

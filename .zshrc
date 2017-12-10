@@ -109,6 +109,10 @@ ns(){
 
 alias sl=ls
 
+function jet() {
+  ssh jet -t "cd $1; zsh --login"
+}
+
 ###############################
 # Fix binding issues in vi-mode
 ###############################

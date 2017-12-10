@@ -66,6 +66,7 @@ filetype plugin indent on    " required
 syntax on
 
 set mouse=a
+set ttymouse=xterm2
 set timeoutlen=1000 ttimeoutlen=0
 set encoding=utf-8
 set cmdheight=1
@@ -157,7 +158,7 @@ else " no gui
 endif
 
 let g:haskellmode_completion_ghc = 1
-autocmd FileType haskell setlocal omnifunc=necoghc#omnifunc
+" autocmd FileType haskell setlocal omnifunc=necoghc#omnifunc
 
 " Elm
 let g:elm_format_autosave = 1
