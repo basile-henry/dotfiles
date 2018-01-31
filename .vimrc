@@ -28,13 +28,14 @@ Plugin 'vim-syntastic/syntastic'
 Plugin 'ervandew/supertab'
 Plugin 'Shougo/neocomplete.vim'
 Plugin 'Shougo/vimproc.vim'
-Plugin 'nbouscal/vim-stylish-haskell'
+" Plugin 'nbouscal/vim-stylish-haskell'
 
 " Elm
 Plugin 'elmcast/elm-vim'
 
 " Colour scheme
-Plugin 'arcticicestudio/nord-vim'
+" Plugin 'arcticicestudio/nord-vim'
+Plugin 'rakr/vim-one'
 
 " Python
 Plugin 'davidhalter/jedi-vim'
@@ -51,6 +52,12 @@ Plugin 'ctrlpvim/ctrlp.vim'
 " Ack/Ag
 Plugin 'mileszs/ack.vim'
 
+" Racket
+Plugin 'wlangstroth/vim-racket'
+
+" Nim
+Plugin 'zah/nim.vim'
+
 call vundle#end()            " required
 filetype plugin indent on    " required
 
@@ -63,7 +70,12 @@ filetype plugin indent on    " required
 " see :h vundle for more details or wiki for FAQ
 " Put your non-Plugin stuff after this line
 
-syntax on
+set term=xterm-256color
+" set t_Co=256
+set termguicolors
+syntax enable
+
+set background=dark
 
 set mouse=a
 set ttymouse=xterm2
@@ -86,9 +98,6 @@ set incsearch
 set clipboard=unnamedplus,autoselect
 set hlsearch
 set incsearch
-set term=screen-256color
-" set t_Co=256
-" set termguicolors
 set completeopt=menuone,menu,longest
 set noshowmode
 set dict+=/usr/share/dict/words
@@ -100,7 +109,8 @@ set laststatus=2
 " Theme
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
-colorscheme nord
+let g:airline_theme = 'one'
+colorscheme one
 
 map <Leader>n :NERDTreeToggle<CR>
 let NERDTreeIgnore = ['\.o$', '\.hi$', '\.dyn.*$']
