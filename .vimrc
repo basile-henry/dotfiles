@@ -19,19 +19,24 @@ Plugin 'matze/vim-move'
 Plugin 'vim-pandoc/vim-pandoc-syntax'
 Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/nerdcommenter'
-
-" Haskell as describe http://www.stephendiehl.com/posts/vim_2016.html
-Plugin 'eagletmt/ghcmod-vim'
-Plugin 'eagletmt/neco-ghc'
 Plugin 'vim-syntastic/syntastic'
 " Plugin 'scrooloose/syntastic'
 Plugin 'ervandew/supertab'
 Plugin 'Shougo/neocomplete.vim'
 Plugin 'Shougo/vimproc.vim'
-" Plugin 'nbouscal/vim-stylish-haskell'
+
+
+" Haskell as describe http://www.stephendiehl.com/posts/vim_2016.html
+Plugin 'eagletmt/ghcmod-vim'
+Plugin 'neovimhaskell/haskell-vim'
+Plugin 'nbouscal/vim-stylish-haskell'
+" Plugin 'eagletmt/neco-ghc'
 
 " Elm
 Plugin 'elmcast/elm-vim'
+
+" Idris
+Plugin 'idris-hackers/idris-vim'
 
 " Colour scheme
 " Plugin 'arcticicestudio/nord-vim'
@@ -167,8 +172,16 @@ else " no gui
   endif
 endif
 
+" Haskell
 let g:haskellmode_completion_ghc = 1
 " autocmd FileType haskell setlocal omnifunc=necoghc#omnifunc
+let g:haskell_enable_quantification = 1   " to enable highlighting of `forall`
+let g:haskell_enable_recursivedo = 1      " to enable highlighting of `mdo` and `rec`
+let g:haskell_enable_arrowsyntax = 1      " to enable highlighting of `proc`
+let g:haskell_enable_pattern_synonyms = 1 " to enable highlighting of `pattern`
+let g:haskell_enable_typeroles = 1        " to enable highlighting of type roles
+let g:haskell_enable_static_pointers = 1  " to enable highlighting of `static`
+let g:haskell_backpack = 1                " to enable highlighting of backpack keywords
 
 " Elm
 let g:elm_format_autosave = 1
