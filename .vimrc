@@ -48,6 +48,9 @@ Plugin 'davidhalter/jedi-vim'
 " Rust
 Plugin 'rust-lang/rust.vim'
 
+" ReasonML
+Plugin 'reasonml-editor/vim-reason-plus'
+
 " Nix
 Plugin 'LnL7/vim-nix'
 
@@ -92,6 +95,7 @@ set number
 set nocompatible
 " set nowrap
 set tw=80
+set ignorecase
 set smartcase
 set smarttab
 set smartindent
@@ -121,7 +125,7 @@ map <Leader>n :NERDTreeToggle<CR>
 let NERDTreeIgnore = ['\.o$', '\.hi$', '\.dyn.*$']
 
 " CtrlP
-let g:ctrlp_user_command = 'ag -l --nocolor -g "" %s'
+let g:ctrlp_user_command = 'ag -i -l --nocolor -g "" %s'
 
 " Ag
 if executable('ag')
@@ -145,6 +149,7 @@ let g:move_key_modifier = 'C'
 " syntastic
 map <Leader>s :SyntasticToggleMode<CR>
 
+set statusline+=%{fugitive#statusline()}
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*

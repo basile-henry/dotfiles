@@ -51,7 +51,7 @@ COMPLETION_WAITING_DOTS="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git cabal stack battery z vi-mode)
+plugins=(git cabal stack z vi-mode)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -79,7 +79,7 @@ KEYTIMEOUT=1
 #
 # Example aliases
 alias zshconfig="$EDITOR ~/.zshrc"
-export PATH=$HOME/.local/bin:$HOME/.cargo/bin:$PATH
+export PATH=$HOME/.cabal/bin:/opt/ghc/bin:$HOME/.local/bin:$HOME/.cargo/bin:/opt/Xilinx/Vivado/2017.1/bin:$PATH
 export GPGKEY=32FE8303BEEAEC0B
 export PASSWORD_STORE_CHARACTER_SET="1-9A-HJ-NP-Za-km-z_+;:.,!?"
 
@@ -110,7 +110,7 @@ ns(){
 alias sl=ls
 
 function jet() {
-  ssh jet -t "cd $1; zsh --login"
+  et jet -c "cd $1; zsh --login"
 }
 
 ###############################
