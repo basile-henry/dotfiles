@@ -12,16 +12,12 @@
 
 set $mod Mod4
 
-exec --no-startup-id "sh -c 'sleep 1; exec feh --bg-fill /home/basile/.background.png'"
-# exec --no-startup-id "sh -c 'sleep 2; exec dropbox'"
-exec --no-startup-id "sh -c 'sleep 1; exec gnome-settings-daemon'"
-
-exec --no-startup-id xrandr --output DP-2 --right-of DP-4 --primary
+exec --no-startup-id nm-applet
+exec --no-startup-id xrandr --output eDP-1 --dpi 220 --primary
 exec --no-startup-id setxkbmap -layout gb -option caps:escape -option compose:ralt
-exec --no-startup-id "sh -c 'sleep 1; exec xmodmap -e \"keycode 135 = Super_R NoSymbol Super_R\"'"
+exec --no-startup-id "sh -c 'sleep 1; exec xmodmap -e \"keycode 107 = Super_R NoSymbol Super_R\"'"
 exec --no-startup-id xset -dpms s off
 exec --no-startup-id xset r rate 250 25
-exec --no-startup-id nm-applet
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below. ISO 10646 = Unicode
@@ -34,7 +30,7 @@ exec --no-startup-id nm-applet
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
-new_window normal 1
+new_window normal 2
 hide_edge_borders both
 font pango:Hermit 0
 
@@ -49,7 +45,7 @@ client.urgent           #da4939 #da4939 #ffffff #900000
 bar {
     position top
     status_command i3status
-    font pango:FiraCode 9
+    font pango:FiraCode 6
     colors{
       background #2b2b2b
       statusline #e6e1dc
@@ -62,7 +58,7 @@ bar {
 }
 
 # start a terminal
-bindsym $mod+Return exec konsole
+bindsym $mod+Return exec xfce4-terminal
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -73,7 +69,9 @@ bindsym $mod+Shift+q kill
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
 # bindsym $mod+d exec --no-startup-id i3-dmenu-desktop --dmenu "dmenu -fn 'DejaVu Sans Mono 11'"
-bindsym $mod+d exec --no-startup-id dmenu_run -fn 'FiraCode 9'
+bindsym $mod+d exec --no-startup-id dmenu_run -l 10 -i -nb "#2E3440" -nf "#ECEFF4" -sb "#8FBCBB" -sf "#2E3440" -f -fn "Fira Code 6"
+
+bindsym $mod+p exec --no-startup-id i3lock
 
 # change focus
 bindsym $mod+h focus left
@@ -184,20 +182,14 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
-# Applets
-exec -no-startup-id nm-applet
-
 # Pulse Audio controls
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl -- set-sink-volume 0 +5% #increase sound volume
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl -- set-sink-volume 0 -5% #decrease sound volume
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle # mute sound
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl -- set-sink-volume @DEFAULT_SINK@ +5%
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl -- set-sink-volume @DEFAULT_SINK@ -5%
+bindsym XF86AudioMute exec --no-startup-id pactl -- set-sink-mute @DEFAULT_SINK@ toggle
 
 # Sreen brightness controls
-bindsym XF86MonBrightnessUp exec xbacklight -inc 20 # increase screen brightness
-bindsym XF86MonBrightnessDown exec xbacklight -dec 20 # decrease screen brightness
-
-# Touchpad controls
-bindsym XF86TouchpadToggle exec ~/.i3/toggletouchpad.sh # toggle touchpad
+bindsym XF86MonBrightnessUp   exec --no-startup-id brightnessctl -- s +5%
+bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl -- s -5%
 
 # Media player controls
 bindsym XF86AudioPlay exec --no-startup-id playerctl play-pause

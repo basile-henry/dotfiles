@@ -29,7 +29,7 @@ Plugin 'Shougo/vimproc.vim'
 " Haskell as describe http://www.stephendiehl.com/posts/vim_2016.html
 Plugin 'eagletmt/ghcmod-vim'
 Plugin 'neovimhaskell/haskell-vim'
-Plugin 'nbouscal/vim-stylish-haskell'
+" Plugin 'nbouscal/vim-stylish-haskell'
 " Plugin 'eagletmt/neco-ghc'
 
 " Elm
@@ -78,15 +78,12 @@ filetype plugin indent on    " required
 " see :h vundle for more details or wiki for FAQ
 " Put your non-Plugin stuff after this line
 
-set term=xterm-256color
-" set t_Co=256
 set termguicolors
 syntax enable
 
 set background=dark
 
 set mouse=a
-set ttymouse=xterm2
 set timeoutlen=1000 ttimeoutlen=0
 set encoding=utf-8
 set cmdheight=1
@@ -104,7 +101,7 @@ set softtabstop=2
 set shiftwidth=2
 set expandtab
 set incsearch
-set clipboard=unnamedplus,autoselect
+set clipboard+=unnamedplus
 set hlsearch
 set incsearch
 set completeopt=menuone,menu,longest
