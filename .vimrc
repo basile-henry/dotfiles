@@ -109,6 +109,8 @@ set noshowmode
 set dict+=/usr/share/dict/words
 set thesaurus+=/usr/share/dict/thesaurus
 
+let mapleader=","
+
 " Always show statusline
 set laststatus=2
 
