@@ -29,7 +29,7 @@ Plugin 'Shougo/vimproc.vim'
 " Haskell as describe http://www.stephendiehl.com/posts/vim_2016.html
 Plugin 'eagletmt/ghcmod-vim'
 Plugin 'neovimhaskell/haskell-vim'
-" Plugin 'nbouscal/vim-stylish-haskell'
+Plugin 'nbouscal/vim-stylish-haskell'
 " Plugin 'eagletmt/neco-ghc'
 
 " Elm
@@ -89,6 +89,7 @@ set encoding=utf-8
 set cmdheight=1
 set showcmd
 set number
+set relativenumber
 set nocompatible
 " set nowrap
 set tw=80

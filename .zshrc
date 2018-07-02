@@ -63,7 +63,7 @@ source $ZSH/oh-my-zsh.sh
 # export LANG=en_US.UTF-8
 
 # Preferred editor for local and remote sessions
-export EDITOR='vim'
+export EDITOR='nvim'
 KEYTIMEOUT=1
 
 # Compilation flags
@@ -79,6 +79,7 @@ KEYTIMEOUT=1
 #
 # Example aliases
 alias zshconfig="$EDITOR ~/.zshrc"
+export PATH=/opt/ghc/bin:$HOME/.local/bin:$HOME/.cargo/bin:/opt/Xilinx/Vivado/2017.1/bin:$PATH
 export GPGKEY=32FE8303BEEAEC0B
 export PASSWORD_STORE_CHARACTER_SET="1-9A-HJ-NP-Za-km-z_+;:.,!?"
 
@@ -92,13 +93,6 @@ export PASSWORD_STORE_CHARACTER_SET="1-9A-HJ-NP-Za-km-z_+;:.,!?"
 # Remove the completion for ns, we use that name as a function
 compdef -d ns
 
-source $HOME/.nix-profile/etc/profile.d/nix.sh
-# if [[ "$IN_NIX_SHELL" == "" ]]; then
-#   if [ -e "/etc/nix/nix-profile.sh" ]; then
-#     source /etc/nix/nix-profile.sh
-#   fi
-# fi
-
 ns(){
   nix-shell --command "IN_NIX_SHELL=1 exec zsh; return" "$@"
 }
@@ -107,6 +101,7 @@ ns(){
 # alias td=/usr/bin/todo.sh
 
 alias sl=ls
+alias vim="TERM=screen-256color $EDITOR"
 
 function jet() {
   et jet -c "cd $1; zsh --login"
