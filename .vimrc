@@ -30,6 +30,7 @@ Plugin 'Shougo/vimproc.vim'
 Plugin 'eagletmt/ghcmod-vim'
 Plugin 'neovimhaskell/haskell-vim'
 Plugin 'nbouscal/vim-stylish-haskell'
+Plugin 'ndmitchell/ghcid', { 'rtp': 'plugins/nvim' }
 " Plugin 'eagletmt/neco-ghc'
 
 " Elm
@@ -109,6 +110,7 @@ set completeopt=menuone,menu,longest
 set noshowmode
 set dict+=/usr/share/dict/words
 set thesaurus+=/usr/share/dict/thesaurus
+set hidden
 
 let mapleader=","
 
