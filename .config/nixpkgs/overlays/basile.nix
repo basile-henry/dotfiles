@@ -9,7 +9,12 @@ in
     # Utilities
     htop            = super.htop;
     git             = super.git;
-    neovim          = super.neovim;
+    hub             = super.gitAndTools.hub;
+    neovim          = super.neovim.override {
+      vimAlias = true;
+      viAlias  = true;
+    };
+
     yadm            = super.yadm;
     zsh             = super.zsh;
     ripgrep         = super.ripgrep;
@@ -25,10 +30,15 @@ in
 
     # Elm
     elm             = super.elmPackages.elm;
+    elm-format      = super.elmPackages.elm-format;
 
     # Rust
     rustc           = super.rustc;
     cargo           = super.cargo;
+
+    # Python
+    python          = super.python;
+    python3         = super.python3;
     
     # Rebuild tool
     nix-rebuild     = super.writeScriptBin "nix-rebuild"
