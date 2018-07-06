@@ -14,6 +14,7 @@ in
     zsh             = super.zsh;
     ripgrep         = super.ripgrep;
     silver-searcher = super.silver-searcher;
+    feh             = super.feh;
 
     # Haskell
     ghc             = haskellPackages.ghc;
