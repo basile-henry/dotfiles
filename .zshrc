@@ -55,6 +55,9 @@ plugins=(git cabal stack z vi-mode zsh-autosuggestions)
 
 source $ZSH/oh-my-zsh.sh
 
+# Fix git completion issues
+# source $(dirname $(readlink `which git`))/../share/git/contrib/completion/git-completion.zsh
+
 # User configuration
 
 # export MANPATH="/usr/local/man:$MANPATH"
@@ -97,6 +100,10 @@ ns(){
   nix-shell --command "IN_NIX_SHELL=1 exec zsh; return" "$@"
 }
 
+nb(){
+  nix-build --no-out-link -j4 --cores 8 "$@"
+}
+
 # todo.txt
 # alias td=/usr/bin/todo.sh
 
@@ -104,7 +111,7 @@ alias sl=ls
 alias vim="TERM=screen-256color $EDITOR"
 
 function jet() {
-  et jet -c "cd $1; zsh --login"
+  ssh jet -t "cd $1; zsh --login"
 }
 
 ###############################

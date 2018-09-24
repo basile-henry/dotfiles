@@ -20,7 +20,10 @@ fi
 PATH="$HOME/bin:$HOME/.local/bin:$PATH"
 
 if [[ "$IN_NIX_SHELL" == "" ]]; then
-  if [ -e "/etc/nix/nix-profile.sh" ]; then
-    . /etc/nix/nix-profile.sh
+  if [ -e "$HOME/.nix-profile/etc/profile.d/nix.sh" ]; then
+    source $HOME/.nix-profile/etc/profile.d/nix.sh
   fi
 fi
+
+export PATH=~/.cabal/bin:~/.nix-profile/bin:$PATH
+if [ -e /home/basile/.nix-profile/etc/profile.d/nix.sh ]; then . /home/basile/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer

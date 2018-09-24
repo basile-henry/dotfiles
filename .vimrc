@@ -27,9 +27,9 @@ Plugin 'Shougo/vimproc.vim'
 
 
 " Haskell as describe http://www.stephendiehl.com/posts/vim_2016.html
-Plugin 'eagletmt/ghcmod-vim'
+" Plugin 'eagletmt/ghcmod-vim'
 Plugin 'neovimhaskell/haskell-vim'
-Plugin 'nbouscal/vim-stylish-haskell'
+" Plugin 'nbouscal/vim-stylish-haskell'
 Plugin 'ndmitchell/ghcid', { 'rtp': 'plugins/nvim' }
 " Plugin 'eagletmt/neco-ghc'
 
@@ -82,15 +82,12 @@ filetype plugin indent on    " required
 set termguicolors
 syntax enable
 
-set background=dark
-
 set mouse=a
 set timeoutlen=1000 ttimeoutlen=0
 set encoding=utf-8
 set cmdheight=1
 set showcmd
 set number
-set relativenumber
 set nocompatible
 " set nowrap
 set tw=80
@@ -202,6 +199,6 @@ let g:rustfmt_autosave = 1
 hi MatchParen cterm=bold ctermbg=none ctermfg=none gui=bold
 
 augroup vimrc_autocmds
-  autocmd BufEnter * highlight OverLength ctermbg=darkgrey guibg=#592929
-  autocmd BufEnter * match OverLength /\%81v.*/
+  autocmd BufEnter *.\(hs\|nix\|sh\) highlight OverLength ctermbg=grey guibg=#592929
+  autocmd BufEnter *.\(hs\|nix\|sh\) match OverLength /\%81v.*/
 augroup END

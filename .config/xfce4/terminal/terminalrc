@@ -28,8 +28,9 @@ MiscNewTabAdjacent=FALSE
 CustomCommand=zsh
 ScrollingUnlimited=TRUE
 FontName=Fira Code 15
-ColorPalette=#282c34;#e06c75;#98c379;#e5c07b;#61afef;#c678dd;#56b6c2;#abb2bf;#545862;#e06c75;#98c379;#e5c07b;#61afef;#c678dd;#56b6c2;#c8ccd4
-ColorForeground=#abb2bf
-ColorBackground=#282c34
+ColorPalette=#fafafa;#ca1243;#50a14f;#c18401;#4078f2;#a626a4;#0184bc;#383a42;#a0a1a7;#ca1243;#50a14f;#c18401;#4078f2;#a626a4;#0184bc;#090a0b
+ColorForeground=#383a42
+ColorBackground=#fafafa
 ColorCursor=x
 ScrollingBar=TERMINAL_SCROLLBAR_NONE
+
