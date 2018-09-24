@@ -6,8 +6,25 @@ in
 {
   userPackages = super.userPackages or {} // {
 
+    # Nix
+    nix-repl        = super.nix-repl;
+    nix-serve       = super.nix-serve;
+
     # Utilities
     htop            = super.htop;
+    yadm            = super.yadm;
+    zsh             = super.zsh;
+    tmux            = super.tmux;
+    ripgrep         = super.ripgrep;
+    silver-searcher = super.silver-searcher;
+    feh             = super.feh;
+    awscli          = super.awscli;
+    eternal-terminal= super.eternal-terminal;
+
+    # Comms
+    weechat         = super.weechat;
+
+    # Dev
     git             = super.git;
     hub             = super.gitAndTools.hub;
     neovim          = super.neovim.override {
@@ -15,11 +32,8 @@ in
       viAlias  = true;
     };
 
-    yadm            = super.yadm;
-    zsh             = super.zsh;
-    ripgrep         = super.ripgrep;
-    silver-searcher = super.silver-searcher;
-    feh             = super.feh;
+    # Shell
+    shellcheck      = super.shellcheck;
 
     # Haskell
     ghc             = haskellPackages.ghc;
@@ -34,12 +48,13 @@ in
 
     # Rust
     rustc           = super.rustc;
+    rustup          = super.rustup;
     cargo           = super.cargo;
 
     # Python
     python          = super.python;
     python3         = super.python3;
-    
+
     # Rebuild tool
     nix-rebuild     = super.writeScriptBin "nix-rebuild"
       ''
