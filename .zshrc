@@ -1,6 +1,8 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
+source ~/.profile
+
 # Path to your oh-my-zsh installation.
 export ZSH=/home/basile/.oh-my-zsh
 
@@ -51,40 +53,35 @@ COMPLETION_WAITING_DOTS="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git cabal stack z vi-mode zsh-autosuggestions)
+plugins=(git cabal stack z vi-mode)
 
 source $ZSH/oh-my-zsh.sh
 
-# User configuration
+###############################
+# Editor
+###############################
 
-# export MANPATH="/usr/local/man:$MANPATH"
-
-# You may need to manually set your language environment
-# export LANG=en_US.UTF-8
-
-# Preferred editor for local and remote sessions
 export EDITOR='nvim'
 KEYTIMEOUT=1
 
-# Compilation flags
-# export ARCHFLAGS="-arch x86_64"
+###############################
+# Aliases
+###############################
 
-# ssh
-# export SSH_KEY_PATH="~/.ssh/rsa_id"
-
-# Set personal aliases, overriding those provided by oh-my-zsh libs,
-# plugins, and themes. Aliases can be placed here, though oh-my-zsh
-# users are encouraged to define aliases within the ZSH_CUSTOM folder.
-# For a full list of active aliases, run `alias`.
-#
-# Example aliases
 alias zshconfig="$EDITOR ~/.zshrc"
-export PATH=/opt/ghc/bin:$HOME/.local/bin:$HOME/.cargo/bin:/opt/Xilinx/Vivado/2017.1/bin:$PATH
-export GPGKEY=32FE8303BEEAEC0B
-export PASSWORD_STORE_CHARACTER_SET="1-9A-HJ-NP-Za-km-z_+;:.,!?"
+alias sl=ls
+alias vim="TERM=screen-256color $EDITOR"
 
-# Fix termite opening new tab
-# source /etc/profile.d/vte.sh
+# git
+alias gw="git worktree list"
+alias gwa="git worktree add"
+alias gwp="git worktree prune"
+
+function jet() {
+  et jet -c "cd $1; zsh --login"
+}
+
+export PATH=$HOME/.local/bin:/opt/Xilinx/Vivado/2017.1/bin:/opt/intelFPGA_pro/18.1/quartus/bin:$PATH
 
 ###############################
 # Nix
@@ -97,14 +94,20 @@ ns(){
   nix-shell --command "IN_NIX_SHELL=1 exec zsh; return" "$@"
 }
 
-# todo.txt
-# alias td=/usr/bin/todo.sh
+nb(){
+  nix-build --no-out-link -j8 --cores 8 "$@"
+}
 
-alias sl=ls
-alias vim="TERM=screen-256color $EDITOR"
+# Change worktree but stay in the same relative directory.
+# (only works if the destination directory exists obviously)
+cw(){
+  current_wt=$(git rev-parse --show-toplevel)
+  cd $(dirname $current_wt)/"$1"/$(realpath --relative-to=$current_wt .)
+}
 
-function jet() {
-  et jet -c "cd $1; zsh --login"
+ghd(){
+  run="ghcid --command \"cabal new-repl $@\""
+  nix-shell -j8 --cores 8 --run "$run"
 }
 
 ###############################
