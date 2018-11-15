@@ -69,6 +69,10 @@ source $ZSH/oh-my-zsh.sh
 export EDITOR='nvim'
 KEYTIMEOUT=1
 
+alias gw="git worktree list"
+alias gwa="git worktree add"
+alias gwp="git worktree prune"
+
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
 
@@ -101,7 +105,7 @@ ns(){
 }
 
 nb(){
-  nix-build --no-out-link -j4 --cores 8 "$@"
+  nix-build --no-out-link -j4 --cores 4 "$@"
 }
 
 # todo.txt
@@ -112,6 +116,17 @@ alias vim="TERM=screen-256color $EDITOR"
 
 function jet() {
   ssh jet -t "cd $1; zsh --login"
+}
+
+# Change worktree but stay in the same relative directory.
+# (only works if the destination directory exists obviously)
+cw(){
+  current_wt=$(git rev-parse --show-toplevel)
+  cd $(dirname $current_wt)/"$1"/$(realpath --relative-to=$current_wt .)
+}
+
+ghd(){
+  nix-shell -j8 --cores 8 --run 'ghcid --command "cabal new-repl $@"'
 }
 
 ###############################

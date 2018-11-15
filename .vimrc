@@ -80,6 +80,7 @@ filetype plugin indent on    " required
 " Put your non-Plugin stuff after this line
 
 set termguicolors
+set background=dark
 syntax enable
 
 set mouse=a
@@ -108,6 +109,9 @@ set noshowmode
 set dict+=/usr/share/dict/words
 set thesaurus+=/usr/share/dict/thesaurus
 set hidden
+
+set list!
+set list listchars=tab:»·,trail:·
 
 let mapleader=","
 
@@ -198,7 +202,7 @@ let g:rustfmt_autosave = 1
 
 hi MatchParen cterm=bold ctermbg=none ctermfg=none gui=bold
 
-augroup vimrc_autocmds
-  autocmd BufEnter *.\(hs\|nix\|sh\) highlight OverLength ctermbg=grey guibg=#592929
-  autocmd BufEnter *.\(hs\|nix\|sh\) match OverLength /\%81v.*/
-augroup END
+" augroup vimrc_autocmds
+"   autocmd BufEnter *.\(hs\|nix\|sh\) highlight OverLength ctermbg=grey guibg=#592929
+"   autocmd BufEnter *.\(hs\|nix\|sh\) match OverLength /\%81v.*/
+" augroup END

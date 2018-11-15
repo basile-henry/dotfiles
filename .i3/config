@@ -14,7 +14,7 @@ set $mod Mod4
 
 exec --no-startup-id nm-applet
 exec --no-startup-id blueman-applet
-exec --no-startup-id xrandr --output eDP-1 --dpi 220 --primary
+# exec --no-startup-id xrandr --output eDP-1 --dpi 220 --primary
 exec --no-startup-id setxkbmap -layout gb -option caps:escape -option compose:ralt
 exec --no-startup-id "sh -c 'sleep 1; exec xmodmap -e \"keycode 107 = Super_R NoSymbol Super_R\"'"
 exec --no-startup-id xset -dpms s off
@@ -60,6 +60,7 @@ bar {
 }
 
 # start a terminal
+# bindsym $mod+Return exec alacritty
 bindsym $mod+Return exec xfce4-terminal
 
 # kill focused window
