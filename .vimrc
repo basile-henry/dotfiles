@@ -86,7 +86,6 @@ set softtabstop=2
 set shiftwidth=2
 set expandtab
 set incsearch
-set clipboard+=unnamedplus
 set hlsearch
 set incsearch
 set completeopt=menuone,menu,longest
