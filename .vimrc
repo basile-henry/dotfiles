@@ -26,13 +26,13 @@ Plug 'scrooloose/nerdtree'
 Plug 'scrooloose/nerdcommenter'
 Plug 'vim-syntastic/syntastic'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-" Plug 'ervandew/supertab'
+Plug 'ervandew/supertab'
+Plug 'tpope/vim-surround'
 " Plug 'Shougo/neocomplete.vim'
 " Plug 'Shougo/vimproc.vim'
 
 " Haskell
 Plug 'neovimhaskell/haskell-vim', {'for': 'haskell' }
-
 Plug 'ndmitchell/ghcid', { 'rtp': 'plugins/nvim', 'for': 'haskell' }
 Plug 'eagletmt/neco-ghc', {'for': 'haskell' }
 " Plug 'eagletmt/ghcmod-vim', {'for': 'haskell' }
@@ -153,7 +153,7 @@ endif
 
 " Haskell
 let g:haskellmode_completion_ghc = 1
-" autocmd FileType haskell setlocal omnifunc=necoghc#omnifunc
+autocmd FileType haskell setlocal omnifunc=necoghc#omnifunc
 let g:haskell_enable_quantification = 1   " to enable highlighting of `forall`
 let g:haskell_enable_recursivedo = 1      " to enable highlighting of `mdo` and `rec`
 let g:haskell_enable_arrowsyntax = 1      " to enable highlighting of `proc`
