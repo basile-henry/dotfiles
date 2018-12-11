@@ -1,83 +1,68 @@
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-
-" let Vundle manage Vundle, required
-Plugin 'VundleVim/Vundle.vim'
-
-" Git
-Plugin 'tpope/vim-fugitive'
-Plugin 'airblade/vim-gitgutter'
-
-Plugin 'vim-airline/vim-airline-themes'
-Plugin 'vim-airline/vim-airline'
-Plugin 'matze/vim-move'
-" Plugin 'vim-pandoc/vim-pandoc'
-Plugin 'vim-pandoc/vim-pandoc-syntax'
-Plugin 'scrooloose/nerdtree'
-Plugin 'scrooloose/nerdcommenter'
-Plugin 'vim-syntastic/syntastic'
-" Plugin 'scrooloose/syntastic'
-Plugin 'ervandew/supertab'
-Plugin 'Shougo/neocomplete.vim'
-Plugin 'Shougo/vimproc.vim'
-
-
-" Haskell as describe http://www.stephendiehl.com/posts/vim_2016.html
-" Plugin 'eagletmt/ghcmod-vim'
-Plugin 'neovimhaskell/haskell-vim'
-" Plugin 'nbouscal/vim-stylish-haskell'
-Plugin 'ndmitchell/ghcid', { 'rtp': 'plugins/nvim' }
-" Plugin 'eagletmt/neco-ghc'
-
-" Elm
-Plugin 'elmcast/elm-vim'
-
-" Idris
-Plugin 'idris-hackers/idris-vim'
+" Load vim-plug
+if empty(glob("~/.vim/autoload/plug.vim"))
+    execute '!curl -fLo ~/.vim/autoload/plug.vim https://raw.github.com/junegunn/vim-plug/master/plug.vim'
+endif
+call plug#begin('~/.vim/plugged')
 
 " Colour scheme
-" Plugin 'arcticicestudio/nord-vim'
-Plugin 'rakr/vim-one'
+Plug 'rakr/vim-one'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'vim-airline/vim-airline'
 
-" Python
-Plugin 'davidhalter/jedi-vim'
-
-" Rust
-Plugin 'rust-lang/rust.vim'
-
-" ReasonML
-Plugin 'reasonml-editor/vim-reason-plus'
-
-" Nix
-Plugin 'LnL7/vim-nix'
+" Git
+Plug 'tpope/vim-fugitive'
+Plug 'airblade/vim-gitgutter'
 
 " CtrlP
-Plugin 'ctrlpvim/ctrlp.vim'
+Plug 'ctrlpvim/ctrlp.vim'
 
 " Ack/Ag
-Plugin 'mileszs/ack.vim'
+Plug 'mileszs/ack.vim'
+
+Plug 'scrooloose/nerdtree'
+Plug 'scrooloose/nerdcommenter'
+Plug 'vim-syntastic/syntastic'
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+" Plug 'ervandew/supertab'
+" Plug 'Shougo/neocomplete.vim'
+" Plug 'Shougo/vimproc.vim'
+
+" Haskell
+Plug 'neovimhaskell/haskell-vim', {'for': 'haskell' }
+
+Plug 'ndmitchell/ghcid', { 'rtp': 'plugins/nvim', 'for': 'haskell' }
+Plug 'eagletmt/neco-ghc', {'for': 'haskell' }
+" Plug 'eagletmt/ghcmod-vim', {'for': 'haskell' }
+" Plug 'nbouscal/vim-stylish-haskell', {'for': 'haskell' }
+
+" Elm
+Plug 'elmcast/elm-vim', {'for': 'elm' }
+
+" Idris
+Plug 'idris-hackers/idris-vim', {'for': 'idris' }
+
+" Python
+Plug 'davidhalter/jedi-vim', {'for': 'python' }
+
+" Rust
+Plug 'rust-lang/rust.vim', {'for': 'rust' }
+
+" ReasonML
+Plug 'reasonml-editor/vim-reason-plus', {'for': 'reasonml' }
+
+" Nix
+Plug 'LnL7/vim-nix', {'for': 'nix' }
 
 " Racket
-Plugin 'wlangstroth/vim-racket'
+Plug 'wlangstroth/vim-racket'
 
 " Nim
-Plugin 'zah/nim.vim'
+Plug 'zah/nim.vim', {'for': 'nim' }
 
-call vundle#end()            " required
-filetype plugin indent on    " required
-
-" Brief help
-" :PluginList       - lists configured plugins
-" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
-" :PluginSearch foo - searches for foo; append `!` to refresh local cache
-" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
-"
-" see :h vundle for more details or wiki for FAQ
-" Put your non-Plugin stuff after this line
+call plug#end()
 
 set termguicolors
 set background=dark
@@ -138,16 +123,8 @@ endif
 " NERDCommenter
 let g:NERDSpaceDelims = 1
 let g:NERDDefaultAlign = 'left'
+
 let g:NERDAltDelims_haskell = 1
-
-" Vim move
-let g:move_key_modifier = 'C'
-
-" GitGutter styling to use · instead of +/-
-" let g:gitgutter_sign_added = '∙'
-" let g:gitgutter_sign_modified = '∙'
-" let g:gitgutter_sign_removed = '∙'
-" let g:gitgutter_sign_modified_removed = '∙'
 
 " syntastic
 map <Leader>s :SyntasticToggleMode<CR>
@@ -163,11 +140,8 @@ let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 0
 let g:syntactic_rust_checkers = ['rustc']
 
-" ghc-mod
-map <silent> tw :GhcModTypeInsert<CR>
-map <silent> ts :GhcModSplitFunCase<CR>
-map <silent> tq :GhcModType<CR>
-map <silent> te :GhcModTypeClear<CR>
+" deoplete
+let g:deoplete#enable_at_startup = 1
 
 " supertab
 let g:SuperTabDefaultCompletionType = '<c-x><c-o>'
