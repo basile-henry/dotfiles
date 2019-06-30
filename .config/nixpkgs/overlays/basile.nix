@@ -1,13 +1,15 @@
 self: super:
 
 let
-  haskellPackages = super.haskell.packages.ghc844;
+  haskellPackages = super.haskell.packages.ghc864;
 
-  dhall-haskell = import (builtins.fetchGit {
-      name = "dhall-haskell";
-      url = https://github.com/dhall-lang/dhall-haskell/;
-      rev = "67ebf6efd67f68fdae742311497f09854ee04457";
-    });
+  dhall-haskell = import (super.pkgs.fetchFromGitHub {
+    owner  = "dhall-lang";
+    repo   = "dhall-haskell";
+    rev    = "1.24.0";
+    sha256 = "0jlzimgaqdi1yj2z03p3hxlb594cd5fnw6m27gn6cwc3f37g4h68";
+    fetchSubmodules = true;
+  });
 in
 {
   userPackages = super.userPackages or {} // {
@@ -16,6 +18,12 @@ in
 
     # Nix
     nix-serve       = super.nix-serve;
+    niv             = (import (super.pkgs.fetchFromGitHub {
+      owner  = "nmattia";
+      repo   = "niv";
+      rev    = "099f9ea92169c2edbc3ca33313b68f5e9686e800";
+      sha256 = "1rqaw2r5wbbfpbxjgwrwzf619la1iqvzp3mhq1mfz9vk4hjd3335";
+    }) {}).niv;
 
     # Utilities
     htop            = super.htop;
@@ -24,9 +32,14 @@ in
     tmux            = super.tmux;
     feh             = super.feh;
     awscli          = super.awscli;
-    eternal-terminal= super.eternal-terminal;
+    watchexec       = super.watchexec;
+    light           = super.light;
+    bat             = super.bat;
+    fd              = super.fd;
+    polybar         = super.polybar;
 
     # Games
+    dwarf-fortress  = super.dwarf-fortress;
     infinisweep     = import (builtins.fetchGit {
       name = "infinisweep";
       url = https://github.com/basile-henry/infinisweep/;
@@ -38,6 +51,8 @@ in
 
     # Dev
     git             = super.git;
+    git-lfs         = super.git-lfs;
+    git-secret      = super.git-secret;
     ripgrep         = super.ripgrep;
     silver-searcher = super.silver-searcher;
     hub             = super.gitAndTools.hub;
@@ -45,8 +60,12 @@ in
       vimAlias = true;
       viAlias  = true;
     };
+    vscode          = super.vscode;
+
     docker          = super.docker;
     docker-compose  = super.docker-compose;
+    miniserve       = super.miniserve;
+    ctags           = super.ctags;
 
     # Shell
     shellcheck      = super.shellcheck;
@@ -54,9 +73,17 @@ in
     # Haskell
     ghc             = haskellPackages.ghc;
     cabal-install   = haskellPackages.cabal-install;
+
     stylish-haskell = haskellPackages.stylish-haskell;
     hlint           = haskellPackages.hlint;
-    ghcid           = haskellPackages.ghcid;
+    ghcid           = haskellPackages.callCabal2nix "ghcid" (
+      super.pkgs.fetchFromGitHub {
+        owner = "basile-henry";
+        repo = "ghcid";
+        rev = "9359c60ae253c0c0a80fbd96aa1bdf891ae7e9b2";
+        sha256 = "02z1aimhs6ixgqymm6y5521iy599xdm6w0061r21xw82dzb7yvrh";
+      }) {};
+    hasktags        = haskellPackages.hasktags;
 
     # Dhall
     dhall           = dhall-haskell.dhall;
@@ -66,13 +93,13 @@ in
 
     # Elm
     elm             = super.elmPackages.elm;
+    elm-format      = super.elmPackages.elm-format;
 
     # Rust
     rustup          = super.rustup;
 
     # Python
-    python          = super.python;
-    python3         = super.python3;
+    python          = super.python3;
 
     # Rebuild tool
     nix-rebuild     = super.writeScriptBin "nix-rebuild"

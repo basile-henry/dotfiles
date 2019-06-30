@@ -27,3 +27,6 @@ fi
 
 export PATH=~/.cabal/bin:~/.nix-profile/bin:$PATH
 if [ -e /home/basile/.nix-profile/etc/profile.d/nix.sh ]; then . /home/basile/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
+
+# Font awesome
+# . ~/.font/*.sh

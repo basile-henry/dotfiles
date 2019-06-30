@@ -27,11 +27,11 @@ MiscSlimTabs=FALSE
 MiscNewTabAdjacent=FALSE
 CustomCommand=zsh
 ScrollingUnlimited=TRUE
-FontName=Fira Code 15
+FontName=Hack 12
 ColorPalette=#282c34;#e06c75;#98c379;#e5c07b;#61afef;#c678dd;#56b6c2;#abb2bf;#545862;#e06c75;#98c379;#e5c07b;#61afef;#c678dd;#56b6c2;#c8ccd4
 ColorForeground=#abb2bf
 ColorBackground=#282c34
 ColorCursor=x
-ScrollingBar=TERMINAL_SCROLLBAR_NONE
 BackgroundDarkness=1.000000
+ScrollingBar=TERMINAL_SCROLLBAR_NONE
 

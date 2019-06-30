@@ -64,6 +64,7 @@ source $ZSH/oh-my-zsh.sh
 
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
+# export LANG=en_GB.UTF-8
 
 # Preferred editor for local and remote sessions
 export EDITOR='nvim'
@@ -111,12 +112,10 @@ nb(){
 # todo.txt
 # alias td=/usr/bin/todo.sh
 
+alias ghcid="ghcid --reverse-errors --no-height-limit --clear"
 alias sl=ls
-alias vim="TERM=screen-256color $EDITOR"
 
-function jet() {
-  ssh jet -t "cd $1; zsh --login"
-}
+alias jet="mosh jet.myrtle"
 
 # Change worktree but stay in the same relative directory.
 # (only works if the destination directory exists obviously)
@@ -174,3 +173,7 @@ if [ ! -S ~/.ssh/ssh_auth_sock ]; then
 fi
 export SSH_AUTH_SOCK=~/.ssh/ssh_auth_sock
 ssh-add -l > /dev/null || ssh-add
+
+# Wasmer
+export WASMER_DIR="$HOME/.wasmer"
+[ -s "$WASMER_DIR/wasmer.sh" ] && source "$WASMER_DIR/wasmer.sh"  # This loads wasmer
