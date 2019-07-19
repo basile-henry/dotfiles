@@ -1,59 +1,76 @@
 self: super:
 
 let
-  haskellPackages = super.haskell.packages.ghc843;
+  haskellPackages = super.haskellPackages;
 in
 {
   userPackages = super.userPackages or {} // {
 
     # Nix
-    nix-repl        = super.nix-repl;
-    nix-serve       = super.nix-serve;
+    inherit (super)
+      nix-repl
+      nix-serve;
 
     # Utilities
-    htop            = super.htop;
-    yadm            = super.yadm;
-    zsh             = super.zsh;
-    tmux            = super.tmux;
-    ripgrep         = super.ripgrep;
-    silver-searcher = super.silver-searcher;
-    feh             = super.feh;
-    awscli          = super.awscli;
-    eternal-terminal= super.eternal-terminal;
-
-    # Comms
-    weechat         = super.weechat;
+    inherit (super)
+      htop
+      yadm
+      zsh
+      tmux
+      ripgrep
+      silver-searcher
+      fzf
+      feh
+      eternal-terminal
+      gawk
+      git-secret
+      miniserve
+      watchexec
+      weechat;
 
     # Dev
-    git             = super.git;
-    hub             = super.gitAndTools.hub;
-    neovim          = super.neovim.override {
+    inherit (super)
+      git
+      git-lfs
+      docker
+      docker-compose
+      ctags;
+    inherit (super.gitAndTools) hub;
+    neovim = super.neovim.override {
       vimAlias = true;
       viAlias  = true;
     };
 
     # Shell
-    shellcheck      = super.shellcheck;
+    inherit (super)
+      shellcheck;
 
     # Haskell
-    ghc             = haskellPackages.ghc;
-    cabal-install   = haskellPackages.cabal-install;
-    stylish-haskell = haskellPackages.stylish-haskell;
-    hlint           = haskellPackages.hlint;
-    ghcid           = haskellPackages.ghcid;
+    inherit (super.haskellPackages)
+      ghc
+      ghcid
+      cabal-install
+      cabal2nix
+      stylish-haskell
+      hlint
+      hasktags;
+    eventlog2html = super.haskell.lib.doJailbreak haskellPackages.eventlog2html;
 
     # Elm
-    elm             = super.elmPackages.elm;
-    elm-format      = super.elmPackages.elm-format;
+    inherit (super.elmPackages)
+      elm
+      elm-format;
 
     # Rust
-    rustc           = super.rustc;
-    rustup          = super.rustup;
-    cargo           = super.cargo;
+    inherit (super)
+      rustup;
 
     # Python
-    python          = super.python;
-    python3         = super.python3;
+    inherit (super.python3Packages)
+      python
+      ipython
+      pylint
+      mypy;
 
     # Rebuild tool
     nix-rebuild     = super.writeScriptBin "nix-rebuild"

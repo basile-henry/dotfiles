@@ -68,9 +68,9 @@ KEYTIMEOUT=1
 # Aliases
 ###############################
 
+alias ghcid="ghcid --reverse-errors --no-height-limit --clear"
 alias zshconfig="$EDITOR ~/.zshrc"
 alias sl=ls
-alias vim="TERM=screen-256color $EDITOR"
 
 # git
 alias gw="git worktree list"
@@ -81,7 +81,7 @@ function jet() {
   et jet -c "cd $1; zsh --login"
 }
 
-export PATH=$HOME/.local/bin:/opt/Xilinx/Vivado/2017.1/bin:/opt/intelFPGA_pro/18.1/quartus/bin:$PATH
+export PATH=$HOME/.local/bin:/opt/Xilinx/Vivado/2017.4/bin:/opt/intelFPGA_pro/18.1/quartus/bin:$PATH
 
 ###############################
 # Nix
@@ -91,12 +91,10 @@ export PATH=$HOME/.local/bin:/opt/Xilinx/Vivado/2017.1/bin:/opt/intelFPGA_pro/18
 compdef -d ns
 
 ns(){
-  nix-shell --command "IN_NIX_SHELL=1 exec zsh; return" "$@"
+  nix-shell -j8 --cores 8 --command "IN_NIX_SHELL=1 exec zsh; return" "$@"
 }
 
-nb(){
-  nix-build --no-out-link -j8 --cores 8 "$@"
-}
+alias nb='nix-build -j8 --cores 8'
 
 # Change worktree but stay in the same relative directory.
 # (only works if the destination directory exists obviously)

@@ -5,7 +5,7 @@ __nix_status() {
   fi
 }
 
-local ret_status="%(?:%{$fg_bold[green]%}➜ :%{$fg_bold[red]%}➜ )"
+local ret_status="%(?:%{$fg_bold[green]%}$ :%{$fg_bold[red]%}$ )"
 PROMPT='
 %{$fg_bold[blue]%}%M%{$reset_color%} $(__nix_status)%{$fg[cyan]%}%c $(git_prompt_info)
 ${ret_status}%{$reset_color%}'
