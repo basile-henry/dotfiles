@@ -1,8 +1,5 @@
 self: super:
 
-let
-  haskellPackages = super.haskellPackages;
-in
 {
   userPackages = super.userPackages or {} // {
 
@@ -54,7 +51,7 @@ in
       stylish-haskell
       hlint
       hasktags;
-    eventlog2html = super.haskell.lib.doJailbreak haskellPackages.eventlog2html;
+    eventlog2html = super.haskell.lib.doJailbreak super.haskellPackages.eventlog2html;
 
     # Elm
     inherit (super.elmPackages)
