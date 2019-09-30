@@ -18,7 +18,6 @@ self: super:
       silver-searcher
       fzf
       feh
-      eternal-terminal
       gawk
       git-secret
       miniserve
@@ -30,7 +29,6 @@ self: super:
       git
       git-lfs
       docker
-      docker-compose
       ctags;
     inherit (super.gitAndTools) hub;
     neovim = super.neovim.override {
@@ -51,7 +49,6 @@ self: super:
       stylish-haskell
       hlint
       hasktags;
-    eventlog2html = super.haskell.lib.doJailbreak super.haskellPackages.eventlog2html;
 
     # Elm
     inherit (super.elmPackages)

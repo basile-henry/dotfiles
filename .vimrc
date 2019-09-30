@@ -68,6 +68,7 @@ call plug#end()
 
 set termguicolors
 set background=dark
+" set background=light
 syntax enable
 let g:rainbow_active=1
 

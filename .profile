@@ -20,7 +20,7 @@ fi
 PATH="$HOME/bin:$HOME/.local/bin:$PATH"
 
 if [[ "$IN_NIX_SHELL" == "" ]]; then
-  if [ -e "/etc/nix/nix-profile.sh" ]; then
-    . /etc/nix/nix-profile.sh
+  if [ -e "/etc/profile.d/nix.sh" ]; then
+    . /etc/profile.d/nix.sh
   fi
 fi
