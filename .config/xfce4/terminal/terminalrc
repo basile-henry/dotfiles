@@ -33,4 +33,5 @@ ColorForeground=#d3d0c8
 ColorBackground=#2d2d2d
 ColorCursor=x
 ScrollingBar=TERMINAL_SCROLLBAR_NONE
+FontUseSystem=TRUE
 

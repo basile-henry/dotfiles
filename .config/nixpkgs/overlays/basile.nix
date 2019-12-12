@@ -5,7 +5,7 @@ self: super:
 
     # Nix
     inherit (super)
-      nix-repl
+      nix
       nix-serve;
 
     # Utilities
@@ -60,11 +60,11 @@ self: super:
       rustup;
 
     # Python
-    inherit (super.python3Packages)
-      python
-      ipython
-      pylint
-      mypy;
+    # inherit (super.python3Packages)
+    #   python
+    #   ipython
+    #   pylint
+    #   mypy;
 
     # Rebuild tool
     nix-rebuild     = super.writeScriptBin "nix-rebuild"

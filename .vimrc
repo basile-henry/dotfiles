@@ -41,7 +41,8 @@ Plug 'eagletmt/neco-ghc', {'for': 'haskell' }
 " Plug 'nbouscal/vim-stylish-haskell', {'for': 'haskell' }
 
 " Elm
-Plug 'elmcast/elm-vim', {'for': 'elm' }
+" Plug 'elmcast/elm-vim', {'for': 'elm' }
+Plug 'andys8/vim-elm-syntax', {'for': 'elm' }
 
 " Idris
 Plug 'idris-hackers/idris-vim', {'for': 'idris' }
@@ -71,6 +72,7 @@ set background=dark
 " set background=light
 syntax enable
 let g:rainbow_active=1
+set inccommand=nosplit
 
 set list!
 set list listchars=tab:»·,trail:·
@@ -83,7 +85,7 @@ set number
 set nocompatible
 " set nowrap
 set tw=80
-set ignorecase
+" set ignorecase
 set smartcase
 set smarttab
 set smartindent
@@ -172,7 +174,14 @@ let g:haskell_backpack = 1                " to enable highlighting of backpack k
 let g:haskell_indent_disable = 1
 
 " Elm
+let g:elm_jump_to_error = 0
+let g:elm_make_show_warnings = 0
+let g:elm_syntastic_show_warnings = 0
+let g:elm_browser_command = ""
+let g:elm_detailed_complete = 0
 let g:elm_format_autosave = 1
+let g:elm_format_fail_silently = 0
+let g:elm_setup_keybindings = 0
 autocmd FileType elm setlocal shiftwidth=4 softtabstop=4
 
 " Rust

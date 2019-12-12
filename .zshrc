@@ -81,7 +81,7 @@ function jet() {
   et jet -c "cd $1; zsh --login"
 }
 
-export PATH=$HOME/.local/bin:/opt/Xilinx/Vivado/2017.4/bin:/opt/intelFPGA_pro/18.1/quartus/bin:$PATH
+export PATH=$HOME/.npm-packages/bin:$HOME/.local/bin:/opt/Xilinx/Vivado/2017.4/bin:/opt/intelFPGA_pro/18.1/quartus/bin:$PATH
 
 ###############################
 # Nix
@@ -153,3 +153,6 @@ if [ ! -S ~/.ssh/ssh_auth_sock ]; then
 fi
 export SSH_AUTH_SOCK=~/.ssh/ssh_auth_sock
 ssh-add -l > /dev/null || ssh-add
+
+autoload bashcompinit
+bashcompinit
