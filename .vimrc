@@ -9,8 +9,7 @@ call plug#begin('~/.vim/plugged')
 
 " Colour scheme
 Plug 'rakr/vim-one'
-Plug 'vim-airline/vim-airline-themes'
-Plug 'vim-airline/vim-airline'
+Plug 'itchyny/lightline.vim'
 Plug 'luochen1990/rainbow'
 
 " Git
@@ -45,7 +44,7 @@ Plug 'eagletmt/neco-ghc', {'for': 'haskell' }
 Plug 'andys8/vim-elm-syntax', {'for': 'elm' }
 
 " Idris
-Plug 'idris-hackers/idris-vim', {'for': 'idris' }
+" Plug 'idris-hackers/idris-vim', {'for': 'idris' }
 
 " Python
 Plug 'davidhalter/jedi-vim', {'for': 'python' }
@@ -54,16 +53,19 @@ Plug 'davidhalter/jedi-vim', {'for': 'python' }
 Plug 'rust-lang/rust.vim', {'for': 'rust' }
 
 " ReasonML
-Plug 'reasonml-editor/vim-reason-plus', {'for': 'reasonml' }
+" Plug 'reasonml-editor/vim-reason-plus', {'for': 'reasonml' }
 
 " Nix
 Plug 'LnL7/vim-nix', {'for': 'nix' }
 
 " Racket
-Plug 'wlangstroth/vim-racket'
+" Plug 'wlangstroth/vim-racket'
 
 " Nim
-Plug 'zah/nim.vim', {'for': 'nim' }
+" Plug 'zah/nim.vim', {'for': 'nim' }
+
+" Typescript
+" Plug 'leafgarland/typescript-vim'
 
 call plug#end()
 
@@ -72,7 +74,6 @@ set background=dark
 " set background=light
 syntax enable
 let g:rainbow_active=1
-set inccommand=nosplit
 
 set list!
 set list listchars=tab:»·,trail:·
@@ -109,9 +110,8 @@ let mapleader=" "
 set laststatus=2
 
 " Theme
-let g:airline#extensions#tabline#enabled = 1
-let g:airline_powerline_fonts = 1
-let g:airline_theme = 'one'
+let g:lightline = { 'colorscheme': 'wombat' }
+
 colorscheme one
 
 map <Leader>t :TagbarToggle<CR>
