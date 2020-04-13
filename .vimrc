@@ -17,10 +17,14 @@ Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 
 " CtrlP
-Plug 'ctrlpvim/ctrlp.vim'
+" Plug 'ctrlpvim/ctrlp.vim'
+
+" fzf
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 
 " Ack/Ag
-Plug 'mileszs/ack.vim'
+" Plug 'mileszs/ack.vim'
 
 Plug 'scrooloose/nerdtree'
 Plug 'scrooloose/nerdcommenter'
@@ -118,13 +122,17 @@ map <Leader>t :TagbarToggle<CR>
 map <Leader>n :NERDTreeToggle<CR>
 let NERDTreeIgnore = ['\.o$', '\.hi$', '\.dyn.*$']
 
+" fzf
+map <C-p> :GFiles<CR>
+map <Leader>r :Rg!<SPACE>
+
 " CtrlP
-let g:ctrlp_user_command = 'ag -i -l --nocolor -g "" %s'
+" let g:ctrlp_user_command = 'ag -i -l --nocolor -g "" %s'
 
 " Ag
-if executable('ag')
-  let g:ackprg = 'ag --vimgrep'
-endif
+" if executable('ag')
+"   let g:ackprg = 'ag --vimgrep'
+" endif
 
 " NERDCommenter
 let g:NERDSpaceDelims = 1
