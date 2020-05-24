@@ -7,6 +7,9 @@ if empty(glob("~/.vim/autoload/plug.vim"))
 endif
 call plug#begin('~/.vim/plugged')
 
+" CoC
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
 " Colour scheme
 Plug 'rakr/vim-one'
 Plug 'vim-airline/vim-airline-themes'
@@ -26,7 +29,7 @@ Plug 'scrooloose/nerdtree'
 Plug 'scrooloose/nerdcommenter'
 Plug 'vim-syntastic/syntastic'
 " Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'ervandew/supertab'
+" Plug 'ervandew/supertab'
 Plug 'tpope/vim-surround'
 Plug 'majutsushi/tagbar'
 " Plug 'Shougo/neocomplete.vim'
@@ -41,6 +44,10 @@ Plug 'eagletmt/neco-ghc', {'for': 'haskell' }
 
 " Elm
 Plug 'elmcast/elm-vim', {'for': 'elm' }
+
+" OCaml
+" Plug 'ocaml/vim-ocaml'
+" Plug 'copy/deoplete-ocaml'
 
 " Idris
 Plug 'idris-hackers/idris-vim', {'for': 'idris' }
@@ -71,16 +78,27 @@ Plug 'wlangstroth/vim-racket'
 " Nim
 Plug 'zah/nim.vim', {'for': 'nim' }
 
+" JS
+Plug 'pangloss/vim-javascript', {'for': 'js'}
+
 call plug#end()
+
+" CoC setup
+set updatetime=300
+autocmd FileType rust setlocal signcolumn=yes
+
+"Fix Konsole bug
+set guicursor=
 
 set termguicolors
 set background=dark
+" set background=light
 syntax enable
 
 set mouse=a
 set timeoutlen=1000 ttimeoutlen=0
 set encoding=utf-8
-set cmdheight=1
+set cmdheight=2
 set showcmd
 set number
 set nocompatible
@@ -99,7 +117,7 @@ set hlsearch
 set incsearch
 set completeopt=menuone,menu,longest
 set noshowmode
-set dict+=/usr/share/dict/words
+set dict+=/usr/share/dict/british-english
 set thesaurus+=/usr/share/dict/thesaurus
 set hidden
 
@@ -119,7 +137,7 @@ let g:airline_theme = 'one'
 colorscheme one
 let g:one_allow_italics = 1
 
-map <Leader>t :TagbarToggle<CR>
+" map <Leader>t :TagbarToggle<CR>
 map <Leader>n :NERDTreeToggle<CR>
 let NERDTreeIgnore = ['\.o$', '\.hi$', '\.dyn.*$']
 
@@ -149,27 +167,37 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 0
 let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 0
-let g:syntactic_rust_checkers = ['rustc']
+" let g:syntactic_rust_checkers = ['rustc']
 
 " deoplete
 " let g:deoplete#enable_at_startup = 1
+" this is the default, make sure it is not set to "omnifunc" somewhere else in your vimrc
+" let g:deoplete#complete_method = "complete"
+
+" other completion sources suggested to disable
+" let g:deoplete#ignore_sources = {}
+" let g:deoplete#ignore_sources.ocaml = ['buffer', 'around', 'member', 'tag']
+
+" no delay before completion
+" let g:deoplete#auto_complete_delay = 0
+
 " autocmd FileType elm let b:deoplete_disable_auto_complete = 1
 " let g:elm_detailed_complete = 0
 
 " supertab
-let g:SuperTabDefaultCompletionType = '<c-x><c-o>'
+" let g:SuperTabDefaultCompletionType = '<c-x><c-o>'
 
-if has("gui_running")
-  imap <c-space> <c-r>=SuperTabAlternateCompletion("\<lt>c-x>\<lt>c-o>")<cr>
-else " no gui
-  if has("unix")
-    inoremap <Nul> <c-r>=SuperTabAlternateCompletion("\<lt>c-x>\<lt>c-o>")<cr>
-  endif
-endif
+" if has("gui_running")
+"   imap <c-space> <c-r>=SuperTabAlternateCompletion("\<lt>c-x>\<lt>c-o>")<cr>
+" else " no gui
+"   if has("unix")
+"     inoremap <Nul> <c-r>=SuperTabAlternateCompletion("\<lt>c-x>\<lt>c-o>")<cr>
+"   endif
+" endif
 
 " Haskell
 let g:haskellmode_completion_ghc = 1
-autocmd FileType haskell setlocal omnifunc=necoghc#omnifunc
+" autocmd FileType haskell setlocal omnifunc=necoghc#omnifunc
 let g:haskell_enable_quantification = 1   " to enable highlighting of `forall`
 let g:haskell_enable_recursivedo = 1      " to enable highlighting of `mdo` and `rec`
 let g:haskell_enable_arrowsyntax = 1      " to enable highlighting of `proc`
@@ -186,7 +214,7 @@ let g:elm_format_autosave = 1
 autocmd FileType elm setlocal shiftwidth=4 softtabstop=4
 
 " Rust
-let g:rustfmt_autosave = 1
+" let g:rustfmt_autosave = 1
 " au FileType rust nmap gd <Plug>(rust-def)
 " au FileType rust nmap gs <Plug>(rust-def-split)
 " au FileType rust nmap gx <Plug>(rust-def-vertical)
@@ -239,6 +267,16 @@ let g:tagbar_type_haskell = {
         \ 'instance' : 'ft'
     \ }
     \ }
+
+" OCaml Merlin
+if executable('opam')
+  let g:opamshare=substitute(system('opam config var share'),'\n$','','''')
+  if isdirectory(g:opamshare."/merlin/vim")
+    execute "set rtp+=" . g:opamshare."/merlin/vim"
+  endif
+endif
+
+let g:merlin_completion_with_doc = 1
 
 " Elm TagBar
 " (from https://gist.github.com/MaximeWack/388c393b7db290dd732f0a2d403118c5)
